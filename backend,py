@@ -177,7 +177,10 @@ video_path = "video_real.mp4" # Uploaded filename will be replaced here
 audio_path = "output_audio.wav"
 video_label, audio_label = multimodal_deepfake_detection(
     video_path, audio_path)
-if video_label == "real" and audio_label == "real":
-    print("The Uploaded File is Real!") # Pass it to frontend via props
+if audio_label != None:
+    if video_label == "real" and audio_label == "real":
+        print("The Uploaded File is Real!") # Pass it to frontend via props
+    else:
+        print("The Uploaded File is Fake!") 
 else:
-    print("The Uploaded FIle is Fake!") 
+    print("The Uploaded File is "+video_label+"!")
